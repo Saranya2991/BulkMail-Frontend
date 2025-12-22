@@ -1,6 +1,7 @@
 import { useState, useRef } from "react"
-import axios from "axios"
+import axios, { AxiosError} from "axios"
 import * as XLSX from "xlsx"
+
 function BulkMail(){
 
 const [msg, setmsg] = useState("")
@@ -57,7 +58,7 @@ function send(){
   }
 
   if (!msg.trim()) {
-    alert("Message cannot be empty")
+    alert("Message required")
     return
   }
   if (emaillist.length === 0) {
@@ -66,7 +67,7 @@ function send(){
   }
 
     setstaus(true)
-    axios.post("https://bulk-mail-project-delta.vercel.app/sendemail",{subject:subject,msg:msg,emaillist:emaillist})
+    axios.post("https://bulk-mail-project-delta.vercel.app/api/sendemail",{subject:subject,msg:msg,emaillist:emaillist})
     .then(function(data){
         if(data.data === true)
         {
