@@ -67,28 +67,25 @@ function send(){
   }
 
     setstaus(true)
-    axios.post("https://bulk-mail-project-delta.vercel.app/api/sendemail",{subject:subject,msg:msg,emaillist:emaillist})
+    axios.post("https://bulk-mail-project-delta.vercel.app/sendemail",{subject:subject,msg:msg,emaillist:emaillist})
     .then(function(data){
-        if(data.data === true)
-        {
-            alert("Email Sent Successfully")
-            setstaus(false)
-            setemaillist([])
-            fileInputRef.current.value = "";
-            setmsg("")
-            setSubject("")
+        if (res.data === true) {
+          alert("Email Sent Successfully")
+        } else {
+          alert("Failed. Try Again Later")
         }
-        else{
-            alert("Failed. Try Again Later")
-             setstaus(false)
-            setemaillist([])
-            fileInputRef.current.value = "";
-            setmsg("")
-            setSubject("")
-             
-             
-        }
-    })
+      })
+      .catch(function (error) {
+        console.error(error)
+        alert("Server error. Please try again.")
+      })
+      .finally(function () {
+        setstaus(false)
+        setemaillist([])
+        fileInputRef.current.value = ""
+        setmsg("")
+        setSubject("")
+      })
 }
 
     return(
