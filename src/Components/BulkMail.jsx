@@ -81,6 +81,11 @@ function send(){
         else{
             alert("Failed. Try Again Later")
              setstaus(false)
+            setemaillist([])
+            fileInputRef.current.value = "";
+            setmsg("")
+            setSubject("")
+             
              
         }
     })
