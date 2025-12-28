@@ -1,5 +1,5 @@
 import { useState, useRef } from "react"
-import axios, { AxiosError} from "axios"
+import axios from "axios"
 import * as XLSX from "xlsx"
 
 function BulkMail(){
@@ -67,7 +67,7 @@ function send(){
   }
 
     setstaus(true)
-    axios.post("https://bulk-mail-project-delta.vercel.app/sendemail",{subject:subject,msg:msg,emaillist:emaillist})
+    axios.post("https://bulk-mail-project-delta.vercel.app/api/sendemail",{subject:subject,msg:msg,emaillist:emaillist})
     .then(function(data){
         if(data.data === true)
         {
