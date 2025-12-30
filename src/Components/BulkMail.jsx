@@ -65,7 +65,7 @@ function send(){
     alert("Please upload an email file")
     return
   }
-
+    console.log("API URL:", import.meta.env.VITE_API_URL);
     setstaus(true)
     axios.post(import.meta.env.VITE_API_URL+"/sendemail",{subject:subject,msg:msg,emaillist:emaillist})
     .then(function(data){
