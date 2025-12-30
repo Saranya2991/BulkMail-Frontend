@@ -67,7 +67,7 @@ function send(){
   }
 
     setstaus(true)
-    axios.post(import.meta.VITE_API_URL+"/sendemail",{subject:subject,msg:msg,emaillist:emaillist})
+    axios.post(import.meta.env.VITE_API_URL+"/sendemail",{subject:subject,msg:msg,emaillist:emaillist})
     .then(function(data){
         if(data.data === true)
         {
