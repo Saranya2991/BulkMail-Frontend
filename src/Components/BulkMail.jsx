@@ -31,7 +31,7 @@ function handlefile(event){
         //console.log(e.target.result)
         const data = e.target.result
 
-        const workbook = XLSX.read(data, { type: 'binary' })
+        const workbook = XLSX.read(data, { type: 'array' })
         //console.log(workbook)
 
         const sheetName = workbook.SheetNames[0]
@@ -39,13 +39,13 @@ function handlefile(event){
         //console.log(worksheet)
         const emaillist = XLSX.utils.sheet_to_json(worksheet,{header:'A'})
         //console.log(emaillist)
-        const totalemail = emaillist.map(function(item){return item.A})
+        const totalemail = emaillist.map(row=>row.A).filter(Boolean)
         //console.log(totalemail)
         setemaillist(totalemail)
     }
 
     //Excel files are binary format as default
-    reader.readAsBinaryString(file);
+    reader.readAsArrayBuffer(file);
 
 }
 
