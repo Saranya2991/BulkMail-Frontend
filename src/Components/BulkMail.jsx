@@ -67,7 +67,7 @@ function send(){
   }
     console.log("API URL:", import.meta.env.VITE_API_URL);
     setstaus(true)
-    axios.post(`{$import.meta.env.VITE_API_URL}+"/sendemail`,{subject:subject,msg:msg,emaillist:emaillist},{
+    axios.post(`${import.meta.env.VITE_API_URL}/sendemail`,{subject:subject,msg:msg,emaillist:emaillist},{
     headers: {
       "Content-Type": "application/json"
     }
