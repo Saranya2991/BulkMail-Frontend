@@ -37,9 +37,9 @@ function handlefile(event){
         const sheetName = workbook.SheetNames[0]
         const worksheet = workbook.Sheets[sheetName]
         //console.log(worksheet)
-        const emaillist = XLSX.utils.sheet_to_json(worksheet,{header:'A'})
+        const emaillist = XLSX.utils.sheet_to_json(worksheet,{header:'1'})
         //console.log(emaillist)
-        const totalemail = emaillist.map(row=>row.A).filter(Boolean)
+        const totalemail = emaillist.map((row)=>row[0]).filter(Boolean)
         //console.log(totalemail)
         setemaillist(totalemail)
     }
